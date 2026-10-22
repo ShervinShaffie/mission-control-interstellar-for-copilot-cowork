@@ -119,13 +119,13 @@ Mission Control Interstellar runs in the browser, on Windows, macOS or anything 
 - **Each person sees only their own accounts.** Connections can't be shared, so everyone you share the app with signs in to their own GitHub, Google and Box accounts. Each plugin panel shows which account it's using, with a link to check or change it.
 - **Where things are stored:** your layout and settings stay in your browser. Your activity history is saved to a file in your own OneDrive.
 - **Nothing goes out on its own.** The dashboard never sends emails, posts messages or changes files on its own. Everything happens when you select it, and deleting always asks you first.
-- **The code contains no personal data.** This package contains none of the author's (or anyone else's) personal data or organization details. That's checked by `scripts/verify-clean.mjs`, which fails on any email address, tenant, environment or app ID, connection ID, or tenant-specific link.
+- **The code is checked for personal data and tenant details by verify-clean.** `scripts/verify-clean.mjs` fails on any email address, tenant, environment or app ID, connection ID, or tenant-specific link.
 
 ## Disclaimer and license
 
 This is a personal, community project, and it is not an official Microsoft product. It is not built, endorsed, supported, or maintained by Microsoft. Names like Microsoft 365, Copilot, Power Apps, GitHub, Google Drive, Google Calendar and Box are used only to describe the services this tool works with. Any views or work here are the author's own and do not represent Microsoft.
 
-It is provided as is, for personal and demo use, and it is not meant for production. Mission Control Interstellar is shared free of charge with no warranty of any kind. It can read and act on your own Microsoft 365, GitHub, Google and Box data. With your approval in the dashboard, it can create, change and delete files and calendar events, so you use it at your own risk. To the maximum extent allowed by law, the author is not liable for any outcome, data loss, missed or mistaken change, or other damage that comes from using it.
+It is provided as is, for personal and demo use, and it is not meant for production. Mission Control Interstellar is shared free of charge with no warranty of any kind. It is provided without support or any obligation to fix issues or provide updates. It can read and act on your own Microsoft 365, GitHub, Google and Box data. With your approval in the dashboard, it can create, change and delete files and calendar events, so you use it at your own risk. To the maximum extent allowed by law, the author is not liable for any outcome, data loss, missed or mistaken change, or other damage that comes from using it.
 
 The header image is an original image created for this project and is not from any film.
 

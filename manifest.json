@@ -47,6 +47,6 @@
     "settings": "browser (per user)",
     "activityHistory": "the user's own OneDrive: /Mission Control Interstellar/Activity history.json"
   },
-  "privacy": "Contains none of the author's (or anyone else's) personal data or organization identifiers. Enforced by scripts/verify-clean.mjs, which fails on any email address, GUID, connection ID or tenant-specific URL. Each person connects their own accounts; connections are not shareable.",
+  "privacy": "Checked for personal data and tenant details by scripts/verify-clean.mjs, which fails on any email address, GUID, connection ID or tenant-specific URL. Each person connects their own accounts; connections are not shareable.",
   "note": "Not an official Microsoft product. Author attribution is provenance metadata and is not shown in the app UI."
 }
