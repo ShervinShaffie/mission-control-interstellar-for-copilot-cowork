@@ -1,0 +1,476 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+
+@custom-variant data-open {
+  &:where([data-state="open"]),
+  &:where([data-open]:not([data-open="false"])) { @slot; }
+}
+@custom-variant data-closed {
+  &:where([data-state="closed"]),
+  &:where([data-closed]:not([data-closed="false"])) { @slot; }
+}
+@custom-variant data-checked {
+  &:where([data-state="checked"]),
+  &:where([data-checked]:not([data-checked="false"])) { @slot; }
+}
+@custom-variant data-unchecked {
+  &:where([data-state="unchecked"]),
+  &:where([data-unchecked]:not([data-unchecked="false"])) { @slot; }
+}
+@custom-variant data-selected {
+  &:where([data-selected="true"]) { @slot; }
+}
+@custom-variant data-disabled {
+  &:where([data-state="disabled"]),
+  &:where([data-disabled]:not([data-disabled="false"])) { @slot; }
+}
+@custom-variant data-active {
+  &:where([data-state="active"]),
+  &:where([data-active]:not([data-active="false"])) { @slot; }
+}
+@custom-variant data-horizontal {
+  &:where([data-orientation="horizontal"]) { @slot; }
+}
+@custom-variant data-vertical {
+  &:where([data-orientation="vertical"]) { @slot; }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.975 0 265);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(0.993 0.002 265);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(0.993 0.002 265);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(.47 .16 265);
+  --primary-foreground: oklch(.99 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.47 0 0);
+  --accent: oklch(.90 .04 265);
+  --accent-foreground: oklch(.38 .13 265);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.84 0.045 265);
+  --input: oklch(0.84 0.045 265);
+  --ring: oklch(.47 .16 265);
+  --radius: 1.25rem;
+  --chart-1: oklch(0.55 0.17 255);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.47 0.16 265);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  margin: 0;
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Segoe UI', 'Geist Variable', system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: oklch(0.13 0.025 265);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.19 0.03 265);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.19 0.03 265);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(.63 .16 265);
+  --primary-foreground: oklch(.15 .01 265);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(.26 .05 265);
+  --accent-foreground: oklch(.9 .03 265);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.34 0.05 265);
+  --input: oklch(0.34 0.05 265);
+  --ring: oklch(.63 .16 265);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+/*
+ * Auto-dark via OS preference (issue aether#7883).
+ *
+ * The home page renders before any user code can wire a dark-mode class
+ * onto <html>, so it inherits :root's pure-white --background. When cowork
+ * is itself in dark mode, the iframe pops out as a white block inside dark
+ * chrome.
+ *
+ * Mirror the .dark vars under prefers-color-scheme: dark so the initial
+ * paint (and any user code that hasn't wired its own toggle yet)
+ * picks up the user agent's color scheme automatically. The :not(.light)
+ * carve-out preserves an explicit-light escape hatch: user code that
+ * forces <html class="light"> wins over the OS preference.
+ *
+ * Explicit <html class="dark"> remains the highest-priority signal: this
+ * @media block targets `:root:not(.light)`, so user code that sets
+ * <html class="light"> opts out of OS-dark, and an explicit `.dark` toggle
+ * still themes correctly (the OS-dark block and the `.dark` class agree).
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: oklch(0.13 0.025 265);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.19 0.03 265);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.19 0.03 265);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(.63 .16 265);
+    --primary-foreground: oklch(.15 .01 265);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(.26 .05 265);
+    --accent-foreground: oklch(.9 .03 265);
+    --destructive: oklch(0.704 0.191 22.216);
+    --destructive-foreground: oklch(0.985 0 0);
+    --border: oklch(0.34 0.05 265);
+    --input: oklch(0.34 0.05 265);
+    --ring: oklch(.63 .16 265);
+    --chart-1: oklch(0.488 0.243 264.376);
+    --chart-2: oklch(0.696 0.17 162.48);
+    --chart-3: oklch(0.769 0.188 70.08);
+    --chart-4: oklch(0.627 0.265 303.9);
+    --chart-5: oklch(0.645 0.246 16.439);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+:root {
+  --urgent-bg: linear-gradient(110deg, #fee2e2, #fecaca);
+  --urgent-heading: #991b1b;
+  --urgent-item-bg: #ffffff;
+  --urgent-item-hover: #fff1f2;
+  --urgent-watermark: #991b1b;
+  --allocation-1: #0078d4;
+  --allocation-2: #8b5cf6;
+  --allocation-3: #0891b2;
+  --allocation-4: #b45309;
+  --allocation-5: #be185d;
+  --allocation-6: #64748b;
+}
+.dark {
+  --urgent-bg: linear-gradient(110deg, #3f1d1d, #4c1d1d);
+  --urgent-heading: #fca5a5;
+  --urgent-item-bg: #1e293b;
+  --urgent-item-hover: #334155;
+  --urgent-watermark: #fca5a5;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --urgent-bg: linear-gradient(110deg, #3f1d1d, #4c1d1d);
+    --urgent-heading: #fca5a5;
+    --urgent-item-bg: #1e293b;
+    --urgent-item-hover: #334155;
+    --urgent-watermark: #fca5a5;
+  }
+}
+.command-header { background: radial-gradient(ellipse at top right, #ffffff18, transparent 65%), linear-gradient(110deg, #005a9e, #006b82, #494b9c); color: #ffffff; box-shadow: 0 18px 40px -26px #005a9e; }
+/* Interstellar banner: the astronaut stays visible on the left; a deep-space gradient on the right keeps the white title readable. */
+.command-header.command-banner { background-color: #0b1a2e; background-image: linear-gradient(90deg, #0b1a2e00 0%, #0b1a2e33 28%, #0b1a2ecc 62%, #0b1a2ef2 100%), var(--banner-image); background-size: cover; background-position: left center; box-shadow: 0 18px 40px -26px #0b1a2e; }
+.command-header.command-banner .banner-title h1 { letter-spacing: 0.04em; text-shadow: 0 2px 12px #000000a0; }
+.command-header.command-banner .banner-title p { text-shadow: 0 1px 8px #000000a0; }
+@media (max-width: 640px) { .command-header.command-banner { background-image: linear-gradient(90deg, #0b1a2e66 0%, #0b1a2ecc 55%, #0b1a2ef2 100%), var(--banner-image); background-position: 15% center; } }
+.command-header button[data-slot="button"] { color: var(--foreground); }
+.command-header button:focus-visible { outline-color: #ffffff; }
+.command-header .text-muted-foreground { color: #ffffff; }
+.command-header button[data-slot="button"][data-variant="default"] { color: var(--primary-foreground); }
+.command-center button[data-slot="button"] { height: auto; white-space: normal; }
+.command-center > * { animation: command-enter 350ms ease-out both; }
+.command-center > :nth-child(2) { animation-delay: 40ms; }
+.command-center > :nth-child(4) { animation-delay: 80ms; }
+@keyframes command-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.refresh-stamp::before { content: ""; display: inline-block; width: 0.45rem; height: 0.45rem; margin-right: 0.4rem; border-radius: 50%; background: var(--primary); animation: command-pulse 3s ease-in-out infinite; }
+@keyframes command-pulse { 50% { opacity: 0.5; } }
+.follow-avatar { color: #ffffff; background: linear-gradient(130deg, #1d4ed8, #075985); }
+li:nth-child(5n+2) .follow-avatar { background: linear-gradient(130deg, #006b82, #005a9e); }
+li:nth-child(5n+3) .follow-avatar { background: linear-gradient(130deg, #6d28d9, #86198f); }
+li:nth-child(5n+4) .follow-avatar { background: linear-gradient(130deg, #92400e, #9a3412); }
+li:nth-child(5n+5) .follow-avatar { background: linear-gradient(130deg, #be185d, #991b1b); }
+@media (prefers-reduced-motion: reduce) { .command-center > *, .refresh-stamp::before { animation: none; } }
+@media (forced-colors: active) { .command-header, .follow-avatar { background: Canvas; color: CanvasText; } .refresh-stamp::before { background: Highlight; } }
+.urgent-banner { position: relative; background: var(--urgent-bg); border-color: var(--urgent-heading); }
+.urgent-watermark { position: absolute; top: 0; right: 1rem; color: var(--urgent-watermark); opacity: 0.1; font-size: 5rem; pointer-events: none; }
+.urgent-banner h2 { color: var(--urgent-heading); }
+.urgent-banner li { background: var(--urgent-item-bg); color: var(--foreground); margin: 0.5rem 1rem; border-radius: 0.75rem; }
+.urgent-banner li a:hover { background: var(--urgent-item-hover); }
+.urgent-banner li strong { color: var(--urgent-heading); }
+.load-chart { height: 220px; }
+.load-bar { border-radius: 0.4rem 0.4rem 0 0; border: 1px solid var(--border); }
+.load-bar.normal { background: linear-gradient(#0078d4, #0369a1); }
+.load-bar.heavy { background: linear-gradient(#dc2626, #991b1b); }
+.load-bar.light { background: linear-gradient(#64748b, #475569); }
+.allocation-donut { position: relative; border: 1px solid var(--border); }
+.allocation-donut::after { content: ""; position: absolute; inset: 25%; border-radius: 50%; background: var(--card); border: 1px solid var(--border); }
+@media (forced-colors: active) {
+  .urgent-banner, .urgent-banner li, .urgent-banner li a:hover { background: Canvas; color: CanvasText; border: 1px solid CanvasText; }
+  .urgent-banner h2, .urgent-banner li strong { color: CanvasText; }
+  .load-bar, .allocation-key { background: Highlight !important; border-color: CanvasText; }
+  .allocation-donut { background: Canvas !important; border-color: CanvasText; }
+  .allocation-donut::after { background: Canvas; border-color: CanvasText; }
+  a:focus-visible, button:focus-visible, select:focus-visible { outline-color: Highlight; }
+}
+
+.insight-chart text { fill: var(--foreground); }
+.insight-chart .insight-axis { stroke: var(--border); }
+.insight-chart .insight-mark { fill: var(--primary); stroke: var(--foreground); stroke-width: 0.7; }
+.insight-chart .insight-mark.heavy { fill: var(--destructive); }
+.insight-chart .insight-mark.light { fill: var(--muted-foreground); }
+.insight-chart .insight-line { stroke: var(--primary); }
+.insight-chart .insight-segment { stroke: var(--foreground); stroke-width: 1; }
+@media (forced-colors: active) {
+  .insight-chart text { fill: CanvasText; }
+  .insight-chart .insight-axis { stroke: CanvasText; }
+  .insight-chart .insight-mark, .insight-chart .insight-mark.heavy, .insight-chart .insight-mark.light { fill: Highlight; stroke: CanvasText; }
+  .command-header button:focus-visible { outline-color: Highlight; }
+  .insight-chart .insight-line { stroke: Highlight; }
+  .insight-chart .insight-segment { fill: Canvas !important; stroke: CanvasText; }
+}
+
+.calendar-map .map-label { fill: var(--foreground); }
+.calendar-map .map-grid { stroke: var(--border); stroke-width: 1; }
+.calendar-map .map-event { fill: var(--primary); stroke: var(--primary); }
+.calendar-map .map-event-text { fill: var(--primary-foreground); }
+
+@media (forced-colors: active) {
+  .calendar-map { background: Canvas; }
+  .calendar-map rect { fill: Canvas; }
+  .calendar-map .map-label { fill: CanvasText; }
+  .calendar-map .map-grid { stroke: CanvasText; }
+  .calendar-map .map-event { fill: Highlight; stroke: CanvasText; }
+  .calendar-map .map-event-text { fill: HighlightText; }
+}
+/* ---------- Mission Control Interstellar: component cards (blue / deep purple) ---------- */
+body { background-image: linear-gradient(180deg, color-mix(in oklch, #0078d4 5%, transparent), transparent 420px); }
+.section-card { border: 1px solid color-mix(in oklch, var(--tone, var(--primary)) 28%, var(--border)); border-top: 4px solid var(--tone, var(--primary)); box-shadow: 0 1px 2px #00000010, 0 14px 32px -24px color-mix(in oklch, var(--tone, #005a9e) 55%, transparent); }
+.section-card .section-icon { color: #ffffff; background: linear-gradient(140deg, color-mix(in oklch, var(--tone, var(--primary)) 80%, #ffffff), var(--tone, var(--primary)) 55%, color-mix(in oklch, var(--tone, var(--primary)) 70%, #000000)); box-shadow: inset 0 -2px 0 #00000026, 0 6px 14px -8px var(--tone, var(--primary)); }
+.section-card > section > div > div:first-child { background: linear-gradient(100deg, color-mix(in oklch, var(--tone, var(--primary)) 10%, var(--card)), var(--card) 65%); }
+.section-card [role="tablist"] [data-state="active"] { background: var(--tone, var(--primary)); color: #ffffff; }
+.tone-today { --tone: #005a9e; } .tone-projects { --tone: #1e3a8a; } .tone-calendar { --tone: #0369a1; } .tone-email { --tone: #0078d4; } .tone-work { --tone: #1d4ed8; }
+.tone-teams { --tone: #494b9c; } .tone-people { --tone: #006b82; } .tone-files { --tone: #005a9e; } .tone-onenote { --tone: #4f46e5; }
+.tone-insights { --tone: #1e40af; } .tone-create { --tone: #0369a1; }
+.section-card:has(.tone-today) { --tone: #005a9e; } .section-card:has(.tone-projects) { --tone: #1e3a8a; } .section-card:has(.tone-calendar) { --tone: #0369a1; } .section-card:has(.tone-email) { --tone: #0078d4; }
+.section-card:has(.tone-work) { --tone: #1d4ed8; } .section-card:has(.tone-teams) { --tone: #494b9c; } .section-card:has(.tone-people) { --tone: #006b82; }
+.section-card:has(.tone-files) { --tone: #005a9e; } .section-card:has(.tone-onenote) { --tone: #4f46e5; } .section-card:has(.tone-insights) { --tone: #1e40af; } .section-card:has(.tone-create) { --tone: #0369a1; }
+.dark .section-card > section > div > div:first-child { background: linear-gradient(100deg, color-mix(in oklch, var(--tone, var(--primary)) 30%, var(--card)), var(--card) 70%); }
+/* Emphasis where it matters */
+.attn-overdue { border-left: 5px solid #b91c1c; background: linear-gradient(90deg, color-mix(in oklch, #ef4444 9%, var(--card)), var(--card) 45%); }
+.attn-now { border-left: 5px solid #c2410c; background: linear-gradient(90deg, color-mix(in oklch, #f97316 9%, var(--card)), var(--card) 45%); }
+.attn-today { border-left: 5px solid #b45309; }
+.attn-tomorrow { border-left: 5px solid #2563eb; }
+.attn-week, .attn-later { border-left: 5px solid color-mix(in oklch, #0078d4 40%, var(--border)); }
+.project-card { border-color: color-mix(in oklch, #0078d4 30%, var(--border)); }
+.project-risk { border: 2px solid #b91c1c; border-left-width: 6px; background: linear-gradient(100deg, color-mix(in oklch, #ef4444 8%, var(--card)), var(--card) 55%); }
+.project-watch { border: 2px solid #b45309; border-left-width: 6px; background: linear-gradient(100deg, color-mix(in oklch, #f59e0b 9%, var(--card)), var(--card) 55%); }
+.project-ok { border-left: 6px solid #2563eb; }
+.health-pill { color: #ffffff; background: #64748b; }
+.health-risk { background: linear-gradient(120deg, #dc2626, #991b1b); } .health-watch { background: linear-gradient(120deg, #d97706, #92400e); }
+.health-ok { background: linear-gradient(120deg, #2563eb, #1e40af); } .health-unknown { background: linear-gradient(120deg, #64748b, #475569); }
+.prep-note { border-left: 4px solid #0078d4; }
+/* Sections reused inside a component render flat, not as nested cards. */
+.tab-panel [data-slot="card"] { border: 0; box-shadow: none; padding: 0; background: transparent; gap: 0; }
+.tab-panel [data-slot="card"].urgent-banner { background: var(--urgent-bg); border-radius: var(--radius); padding-bottom: 0.5rem; }
+.tab-panel h2 { font-size: 1.05rem; }
+.tab-panel[hidden] { display: none; }
+/* Day plan */
+.plan-step .plan-dot { background: var(--primary); }
+.plan-urgent { border-left: 4px solid #b91c1c; } .plan-urgent .plan-dot { background: #b91c1c; }
+.plan-meeting { border-left: 4px solid #1d4ed8; } .plan-meeting .plan-dot { background: #1d4ed8; }
+.plan-prep { border-left: 4px solid #b45309; } .plan-prep .plan-dot { background: #b45309; }
+.plan-reply { border-left: 4px solid #0369a1; } .plan-reply .plan-dot { background: #0369a1; }
+.plan-task { border-left: 4px solid #494b9c; } .plan-task .plan-dot { background: #494b9c; }
+.plan-focus { border-left: 4px solid #006b82; } .plan-focus .plan-dot { background: #006b82; }
+.dark .plan-urgent, .dark .plan-meeting, .dark .plan-prep, .dark .plan-reply, .dark .plan-focus { border-left-width: 4px; }
+@media (forced-colors: active) {
+  .section-card, .section-card .section-icon, .section-card > section > div > div:first-child { background: Canvas; color: CanvasText; border-color: CanvasText; box-shadow: none; }
+  .plan-step, .plan-step .plan-dot { border-color: CanvasText; background: Canvas; }
+}
+
+/* ---------- Today priorities: source badges and horizons ---------- */
+.source-badge { color: #fff; background: #475569; }
+.source-calendar { background: #1d4ed8; } .source-outlook { background: #0369a1; } .source-teams { background: #4f46e5; }
+.source-todo { background: #2563eb; } .source-onenote { background: #7719aa; } .source-copilot { background: linear-gradient(120deg, #005a9e, #494b9c); }
+.source-sharepoint { background: #0e7490; } .source-onedrive { background: #0369a1; } .source-loop { background: #9d174d; }
+.horizon-dot { background: var(--muted-foreground); }
+.horizon-overdue { color: #b91c1c; } .horizon-overdue .horizon-dot { background: #b91c1c; }
+.horizon-now { color: #c2410c; } .horizon-now .horizon-dot { background: #c2410c; }
+.horizon-today { color: #b45309; } .horizon-today .horizon-dot { background: #b45309; }
+.horizon-tomorrow { color: #1d4ed8; } .horizon-tomorrow .horizon-dot { background: #1d4ed8; }
+.horizon-week { color: #005a9e; } .horizon-week .horizon-dot { background: #005a9e; }
+.dark .horizon-overdue { color: #fca5a5; } .dark .horizon-now { color: #fdba74; } .dark .horizon-today { color: #fcd34d; }
+.dark .horizon-tomorrow { color: #93c5fd; } .dark .horizon-week { color: #93c5fd; }
+.dark .attn-overdue { background: linear-gradient(90deg, #7f1d1d55, var(--card) 45%); } .dark .attn-now { background: linear-gradient(90deg, #7c2d1255, var(--card) 45%); }
+.dark .project-risk { background: linear-gradient(100deg, #7f1d1d55, var(--card) 55%); } .dark .project-watch { background: linear-gradient(100deg, #78350f55, var(--card) 55%); }
+@media (forced-colors: active) { .attn-overdue, .attn-now, .project-risk, .project-watch { background: Canvas; border-color: CanvasText; } .health-pill, .source-badge { background: Canvas; color: CanvasText; border: 1px solid CanvasText; } }
+/* ---------- Ask Copilot ---------- */
+.tone-ask { --tone: #0078d4; } .section-card:has(.tone-ask) { --tone: #0078d4; }
+.ask-pill { border: 1px solid color-mix(in oklch, #0078d4 35%, var(--border)); background: linear-gradient(120deg, color-mix(in oklch, #0078d4 8%, var(--card)), color-mix(in oklch, #006b82 8%, var(--card))); }
+.ask-pill:hover { border-color: #0078d4; background: color-mix(in oklch, #0078d4 14%, var(--card)); }
+.ask-me { color: #ffffff; background: linear-gradient(120deg, #005a9e, #0078d4); }
+.ask-copilot { border-color: color-mix(in oklch, #0078d4 30%, var(--border)); background: linear-gradient(160deg, color-mix(in oklch, #0078d4 6%, var(--card)), var(--card) 60%); }
+.ask-proposal { border: 2px dashed color-mix(in oklch, #0078d4 55%, var(--border)); background: color-mix(in oklch, #0078d4 4%, var(--card)); }
+.ask-compose { border: 2px solid color-mix(in oklch, #0078d4 45%, var(--border)); background: var(--card); box-shadow: 0 10px 30px -22px #005a9e; }
+.ask-compose:focus-within { border-color: #0078d4; }
+@media (forced-colors: active) { .ask-pill, .ask-me, .ask-copilot, .ask-proposal, .ask-compose { background: Canvas; color: CanvasText; border-color: CanvasText; } }
+/* ---------- Balanced layout: side-by-side components share a height ---------- */
+.layout-box > .section-card { flex: 1 1 auto; display: flex; flex-direction: column; }
+.layout-box > .section-card > section, .layout-box > .section-card > section > div { flex: 1 1 auto; display: flex; flex-direction: column; }
+@media (min-width: 1024px) {
+  .layout-half .tab-panel { max-height: 46rem; overflow-y: auto; scrollbar-gutter: stable; }
+}
+/* ---------- Dismiss ---------- */
+.dismiss-pill { color: var(--muted-foreground); border: 1px solid var(--border); }
+.dismiss-pill:hover { color: var(--foreground); background: var(--accent); }
+/* ---------- How it works diagram ---------- */
+.hiw-diagram { background: linear-gradient(180deg, color-mix(in oklch, #0078d4 5%, var(--card)), var(--card)); border-color: color-mix(in oklch, #0078d4 25%, var(--border)); }
+.hiw-column { background: var(--card); border-color: var(--border); }
+.hiw-arrow { color: #005a9e; }
+.dark .hiw-arrow { color: #93c5fd; }
+.hiw-node { border-left-width: 5px; }
+.hiw-node.hiw-read { border-color: #0078d4; background: color-mix(in oklch, #0078d4 14%, var(--card)); }
+.hiw-node.hiw-copilot { border-color: #d97706; background: color-mix(in oklch, #f59e0b 22%, var(--card)); }
+.hiw-node.hiw-local { border-color: #6b7280; border-style: dashed; border-left-style: solid; background: var(--muted); }
+.hiw-node.hiw-write { border-color: #0f766e; background: color-mix(in oklch, #14b8a6 16%, var(--card)); }
+.hiw-key { display: inline-block; width: 1rem; height: 1rem; border-radius: 0.25rem; }
+.hiw-key.hiw-read { background: #0078d4; } .hiw-key.hiw-copilot { background: #f59e0b; }
+.hiw-key.hiw-local { background: var(--muted); border: 2px dashed #6b7280; } .hiw-key.hiw-write { background: #0f766e; }
+@media (forced-colors: active) { .hiw-diagram, .hiw-column, .hiw-node, .hiw-key { background: Canvas; color: CanvasText; border-color: CanvasText; } }
+/* ---------- Copilot text: short source chips ---------- */
+.cite-group { display: inline-flex; flex-wrap: wrap; gap: 0.25rem; margin-left: 0.15rem; vertical-align: baseline; }
+.cite-chip { display: inline-block; max-width: 16rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: text-bottom;
+  border: 1px solid color-mix(in oklch, #0078d4 35%, var(--border)); background: color-mix(in oklch, #0078d4 8%, var(--card)); color: var(--primary);
+  border-radius: 999px; padding: 0 0.45rem; font-size: 0.7rem; line-height: 1.35rem; font-weight: 600; text-decoration: none; }
+a.cite-chip:hover { background: color-mix(in oklch, #0078d4 18%, var(--card)); }
+a.cite-chip:focus-visible { outline: 2px solid var(--ring); outline-offset: 1px; }
+.copilot-doc h5 { color: var(--foreground); }
+@media (forced-colors: active) { .cite-chip { background: Canvas; color: LinkText; border-color: LinkText; } }
+/* ---------- Connections and History ---------- */
+.conn-ok { background: #e0f2fe; color: #075985; } .conn-checking, .conn-unknown { background: var(--muted); color: var(--muted-foreground); }
+.conn-signin, .conn-error, .conn-partial { background: #fef3c7; color: #92400e; } .conn-blocked { background: #fee2e2; color: #991b1b; }
+.dark .conn-ok { background: #0c4a6e; color: #e0f2fe; } .dark .conn-signin, .dark .conn-error, .dark .conn-partial { background: #78350f; color: #fef3c7; } .dark .conn-blocked { background: #7f1d1d; color: #fee2e2; }
+.history-entry { border-color: color-mix(in oklch, #0078d4 22%, var(--border)); }
+.history-entry > details[open] { box-shadow: 0 8px 22px -18px #005a9e; }
+.history-failed { border-left: 4px solid #d97706; }
+@media (forced-colors: active) { .conn-status { background: Canvas; color: CanvasText; border: 1px solid CanvasText; } }
+
+/* ---------- Plugins: GitHub, Google Drive, Box, Google Calendar ---------- */
+.tone-plugins { --tone: #3730a3; } .section-card:has(.tone-plugins) { --tone: #3730a3; }
+.plugin-panel .plugin-icon { color: #ffffff; background: var(--plugin-tone, var(--primary)); }
+.plugin-github { --plugin-tone: #24292f; }
+.plugin-googledrive { --plugin-tone: #1a73e8; }
+.plugin-box { --plugin-tone: #0061d5; }
+.plugin-googlecalendar { --plugin-tone: #188038; }
+.dark .plugin-github { --plugin-tone: #57606a; }
+@media (forced-colors: active) {
+  .plugin-panel .plugin-icon { background: Canvas; color: CanvasText; border: 1px solid CanvasText; }
+}
+
+/* ---------- Collapsed components: just the title bar, no stretching to the row ---------- */
+.layout-box:has(> .section-card[data-collapsed]) { align-self: start; }
+.layout-box > .section-card[data-collapsed] { flex: 0 0 auto; }
+.section-card[data-collapsed] > section > div > div:first-child { border-bottom-color: transparent; }
+.tone-planner { --tone: #31752f; } .section-card:has(.tone-planner) { --tone: #31752f; }
+.calendar-map .map-google { fill: transparent; stroke: #188038; stroke-width: 2; stroke-dasharray: 3 2; }
+@media (forced-colors: active) { .calendar-map .map-google { stroke: CanvasText; } }
+.calendar-map .map-google-overlap { stroke: #b45309; stroke-width: 3; stroke-dasharray: none; fill: color-mix(in oklch, #f59e0b 18%, transparent); }
+.calendar-map .map-overlap-text { fill: #92400e; }
+.dark .calendar-map .map-overlap-text { fill: #fbbf24; }
+@media (forced-colors: active) { .calendar-map .map-google-overlap { stroke: Highlight; fill: transparent; } .calendar-map .map-overlap-text { fill: CanvasText; } }
+@media (forced-colors: active) { .command-header.command-banner { background: Canvas; } .command-header.command-banner .banner-title h1, .command-header.command-banner .banner-title p { text-shadow: none; } }
