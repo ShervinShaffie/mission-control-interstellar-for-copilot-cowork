@@ -24,11 +24,11 @@ When all four are true, stop.
 
 ## Step 1: Get the package
 
-Work out which of these applies, in order:
+Copilot Cowork can't download from GitHub, so the user attaches the package. Work out which of these applies, in order:
 
-1. **An attached package:** if the user attached `mission-control-interstellar-for-copilot-cowork-v<version>.zip`, extract it fully. The extracted folder is the package folder.
-2. **The latest release:** otherwise, download the latest release's zip from `https://github.com/ShervinShaffie/mission-control-interstellar-for-copilot-cowork/releases` and extract it.
-3. **The repository:** if you can't download the release, read the files from the public repository `https://github.com/ShervinShaffie/mission-control-interstellar-for-copilot-cowork`.
+1. **An attached zip:** if the user attached `mission-control-interstellar-for-copilot-cowork-v<version>.zip`, or GitHub's "Source code (zip)" for a release, extract it fully. The extracted folder is the package folder.
+2. **Attached files:** if the user attached the package's files already extracted, use that folder as the package folder.
+3. **Nothing attached:** stop. Don't try to download the release, read the repository through web search, or rebuild the files from web pages. Tell the user, in one short message, to download the latest `mission-control-interstellar-for-copilot-cowork-v<version>.zip` from https://github.com/ShervinShaffie/mission-control-interstellar-for-copilot-cowork/releases in their browser, attach it to this task, and ask again.
 
 Check that the package folder has `app/src/pages/home.tsx`, `app/src/components/plugins-panel.tsx` and `app/src/assets/interstellar-banner.jpg`. If it doesn't, you have the wrong folder. Fix that first, and if you can't, stop and ask the user to attach the release zip.
 

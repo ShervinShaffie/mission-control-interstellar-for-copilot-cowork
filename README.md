@@ -87,9 +87,13 @@ Changes can take a while to reach your environment. Until they do, the dashboard
 
 ## Install it
 
-The easy way is to let Copilot do it. Open **Copilot Cowork**, start a new task, and paste this:
+Let Copilot do it. Copilot Cowork can't download files from GitHub, so you hand it the release zip:
 
-> Install Mission Control Interstellar from https://github.com/ShervinShaffie/mission-control-interstellar-for-copilot-cowork. Read INSTALL-WITH-COPILOT.md in that repo and follow it exactly, including the stop conditions.
+1. Download the latest `mission-control-interstellar-for-copilot-cowork-v<version>.zip` from the [Releases](../../releases) page. You don't need to unzip it.
+2. Open **Copilot Cowork**, start a new task, and attach the zip.
+3. Paste this:
+
+> Install Mission Control Interstellar from the attached zip. Read INSTALL-WITH-COPILOT.md inside it and follow it exactly, including the stop conditions.
 
 From there, Copilot does everything in that same task:
 
@@ -100,7 +104,7 @@ From there, Copilot does everything in that same task:
 
 When it's done, you get a link to your own copy of Mission Control Interstellar.
 
-If Copilot can't reach the repository, download the latest `mission-control-interstellar-for-copilot-cowork-v*.zip` from the [Releases](../../releases) page, attach it to the Cowork task, and paste the same prompt.
+Always attach the zip. Pasting a link to this repository doesn't work, because Cowork can't download the code from GitHub.
 
 ## Using it
 
