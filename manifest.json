@@ -1,0 +1,52 @@
+{
+  "name": "mission-control-interstellar-for-copilot-cowork",
+  "displayName": "Mission Control Interstellar",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Shervin Shaffie",
+  "audience": "Public - Microsoft 365 work accounts with Copilot Cowork and App Builder",
+  "platform": "Microsoft Copilot Managed Runtime (Copilot App Builder); runs in any modern browser",
+  "description": "A Microsoft 365 dashboard installed with Copilot Cowork: today's priorities, calendar, mail, Teams, files, OneNote, To Do and Planner on one screen, plus two-way GitHub, Google Drive, Google Calendar and Box panels and a combined Outlook + Google calendar with overlap highlighting. Runs without per-use AI.",
+  "entrypoints": {
+    "copilotInstall": "INSTALL-WITH-COPILOT.md",
+    "source": "app/",
+    "verify": "scripts/verify-clean.mjs"
+  },
+  "requires": {
+    "m365": "Microsoft 365 work account",
+    "runLicense": "Power Apps Premium, or Copilot Credits (pay as you go)",
+    "installWith": "Copilot Cowork with App Builder (Microsoft Copilot license + Copilot Credits; tenant in the Frontier program)",
+    "microsoft365Copilot": "optional (improves the Draft with Copilot hand-off)",
+    "adminAllowList": [
+      "GitHub",
+      "Google Drive",
+      "Google Calendar",
+      "Box"
+    ],
+    "customizePlugins": "none required"
+  },
+  "connectors": {
+    "microsoft365": [
+      "shared_office365",
+      "shared_office365users",
+      "shared_teams",
+      "shared_onedriveforbusiness",
+      "shared_onenote",
+      "shared_todo",
+      "shared_planner"
+    ],
+    "plugins": [
+      "shared_github",
+      "shared_googledrive",
+      "shared_googlecalendar",
+      "shared_box"
+    ]
+  },
+  "costModel": "No per-use AI at runtime. Rules run in the app; deeper questions hand off to the user's own Microsoft 365 Copilot. Data loads on open, Refresh, or when you open something.",
+  "storage": {
+    "settings": "browser (per user)",
+    "activityHistory": "the user's own OneDrive: /Mission Control Interstellar/Activity history.json"
+  },
+  "privacy": "Contains none of the author's (or anyone else's) personal data or organization identifiers. Enforced by scripts/verify-clean.mjs, which fails on any email address, GUID, connection ID or tenant-specific URL. Each person connects their own accounts; connections are not shareable.",
+  "note": "Not an official Microsoft product. Author attribution is provenance metadata and is not shown in the app UI."
+}

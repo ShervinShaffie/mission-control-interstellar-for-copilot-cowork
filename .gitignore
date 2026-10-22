@@ -1,0 +1,20 @@
+# Packages and build output (recreated on install)
+node_modules/
+dist/
+.vite-cache/
+
+# Per-environment and local files (never commit; each installation creates its own)
+app/ms.config.json
+.env*.local
+*.log
+.browser-errors.log
+.browser-errors.seq
+.aether-app-builder.json
+.app-meta.json
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
