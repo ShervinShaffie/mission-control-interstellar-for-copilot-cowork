@@ -6,7 +6,7 @@ Your whole workday on one screen: a Microsoft 365 dashboard you install with Cop
 
 Version 1.0.0. See [CHANGELOG.md](CHANGELOG.md) for the full history.
 
-Read the story behind it in **[Build a Mission Control App for About $5 To Run Your Workday](https://cosi.pro/work-mission-control-app-by-copilot-cowork)** on Collaboration Simplified.
+Read the story behind it in **[Mission Control Interstellar](https://cosi.pro/connect-copilot-to-your-apps-google-box-github)** on Collaboration Simplified.
 
 Mission Control Interstellar is a dashboard app built with Copilot App Builder. It runs on Microsoft Copilot Managed Runtime, inside your own Microsoft 365 tenant. It reads your calendar, mail, Teams chats, files, notes and tasks, lines up what needs you today, and lets you act on it without jumping between apps. It goes beyond Microsoft 365 too. Your Google calendar sits next to Outlook with overlaps flagged, and you can browse, preview, edit and upload files in Google Drive and Box from the same screen.
 
